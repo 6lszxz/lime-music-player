@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <title>首页</title>
+</head>
+<body>
+    <div>首页</div>
+    <input type="text" placeholder="搜索歌曲" id="searchSongs">
+    <div id="account">账号管理</div>
+    
+</body>
+<script>
+    const {ipcRenderer}  = require('electron')
+    const accountButton = document.getElementById('account');
+    const searchElem = document.getElementById('searchSongs');
+    // 搜索歌曲
+    searchElem.addEventListener('change',()=>{
+        ipcRenderer.send('searchSongs',searchElem.value)
+    })
+    // 账号管理
+    accountButton.addEventListener('click', ()=>{
+        ipcRenderer.send('goToAccount');
+    })
+</script>

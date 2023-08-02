@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="../styles/changeAccounts.css">
+    <meta charset="utf-8">
+    <title>账号管理</title>
+</head>
+<body>
+    <div id="accountBack">返回</div>
+    <div class="accountButton" id="cloudMusicAccount">
+        <img class="accountButtonImg" src="../../assets/images/cloudMusic.jpg" />
+        <div>网易云账号</div>
+    </div>
+    <div class="accountButton" id="qqMusicAccount">
+        <img class="accountButtonImg" src="../../assets/images/qqMusic.jpg" />
+        <div>QQ音乐账号</div>
+    </div>
+</body>
+<script>
+    const {ipcRenderer} = require('electron');
+
+    // 返回按钮
+    const accountBackElem = document.getElementById('accountBack');
+    accountBackElem.addEventListener('click',()=>{
+        ipcRenderer.send('shutDownChangeAccount')
+    })
+
+    // 网易云
+    const cloudMusicElem = document.getElementById('cloudMusicAccount');
+    cloudMusicElem.addEventListener('click',()=>{
+        ipcRenderer.send('cloudMusicAccount')
+    })
+    // QQ音乐
+    const qqMusicElem = document.getElementById('qqMusicAccount');
+    qqMusicElem.addEventListener('click',()=>{
+        ipcRenderer.send('qqMusicAccount')
+    })
+</script>

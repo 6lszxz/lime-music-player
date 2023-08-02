@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <title>QQ音乐登录</title>
+</head>
+<body>
+    <div>
+        QQ音乐登录，请使用插件qqmusic-cookie-porter，并将其粘贴到下面的输入框中
+    </div>
+    <input type="text" id="inputCookie">
+</body>
+<script>
+    const {ipcRenderer} = require('electron');
+    const inputBoxElem = document.getElementById('inputCookie')
+    inputBoxElem.addEventListener('change',()=>{
+        ipcRenderer.send('qqMusicLogin',inputBoxElem.value)
+    })
+</script>

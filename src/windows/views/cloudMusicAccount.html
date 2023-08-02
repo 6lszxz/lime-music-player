@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <title>网易云登录</title>
+</head>
+<body>
+    <img id="qrImg">
+</body>
+<script>
+    const {ipcRenderer} = require('electron');
+    ipcRenderer.send('cloudMusicLogin');
+    ipcRenderer.on('qrCodeCloudMusic',(event, msg)=>{
+        const qrImgElem = document.getElementById('qrImg');
+        qrImgElem.src=msg
+    });
+</script>
